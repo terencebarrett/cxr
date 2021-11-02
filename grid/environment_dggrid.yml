@@ -1,0 +1,10 @@
+name: coastxray_dggrid
+channels:
+  - conda-forge
+  - r
+  - defaults
+dependencies:
+  - r-base=4
+  - r-devtools
+  - r-rgdal
+  - r-rgeos
