@@ -1,10 +1,11 @@
 # Required packages
 require("dggridR") 
+# library(unix)  # This package is not compatible with this env
 
 # Input Parameters
 resolution <- 5  # Resolution of the processing grid (see the ISEA3H information)
 shapefile_basename <- "dggrid"
-memory_limit <- 16000  # Only used if running on Windows
+memory_limit <- 16000  # [MB] Only used if running on Windows
 
 
 # Define paths
@@ -14,6 +15,7 @@ shapefile_full_name = paste0(shapefile_basename, "_", resolution)
 # Set memory size that R can access - higher (10 and up) resolution levels require
 #   increasing large memory allocation
 memory.limit(memory_limit)
+# rlimit_as(cur = lim$max)  # From the unix package
 
 # Create the processing grid
 dggs <- dgconstruct(res=resolution)
