@@ -1,0 +1,10 @@
+name: coastxray_gee
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - earthengine-api=0.1
+  - jupyter
+  - pandas
+  - pip
