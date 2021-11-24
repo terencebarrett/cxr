@@ -5,7 +5,7 @@
 
 
 def cloudMask(image):
-     """ Masks clouds within the image based on QA bands
+    """ Masks clouds within the image based on QA bands
     :param image: an image
     :type: image: ee.Image
     :return: Input image masked to cloud free areas
@@ -27,7 +27,7 @@ def gridCellCollectionClip(image):
     return image.clip(gridCell).select(['B2', 'B3', 'B4', 'B8', 'B11']).rename('blue', 'green', 'red', 'nir', 'swir1')
     
 def removeDuplicates(image):
-     """ Adds an ID to the image properties based on date and tile.
+    """ Adds an ID to the image properties based on date and tile.
     :param image: an image
     :type: image: ee.Image
     :return: Input image with dateID property
@@ -126,7 +126,7 @@ def mosaicSameDay(collection):
             return newmos
 
         mosaic = ee.Image(bands.iterate(reproject, mosaic))
-        return mosaic        .set('dateTime', filtered.first().get('system:time_start'))        .set('MEAN_SOLAR_ZENITH_ANGLE', meanZenith)        .set('MEAN_SOLAR_AZIMUTH_ANGLE', meanAzimuth)        .set('CLOUD_COVERAGE_ASSESSMENT', meanCloud)        .set('mosaicImageCount', numberImages)
+        return mosaic.set('dateTime', filtered.first().get('system:time_start')).set('MEAN_SOLAR_ZENITH_ANGLE', meanZenith).set('MEAN_SOLAR_AZIMUTH_ANGLE', meanAzimuth).set('CLOUD_COVERAGE_ASSESSMENT', meanCloud).set('mosaicImageCount', numberImages)
 
     new_col = ee.ImageCollection.fromImages(date_list.map(make_col))
     return new_col
@@ -156,7 +156,7 @@ def setImageArea(image):
 
 #FUNCTION: identifies the cloud cover threshold to use in order to return a minimum number of images
 def setFilterDecending(collection, startFilter, interval, iterations, minImages, defaultFilter): 
-     """ Identifies the cloud cover threshold to use in order to return a minimum number of images
+    """ Identifies the cloud cover threshold to use in order to return a minimum number of images
     :param collection: an image collection
     :type: collection: ee.ImageCollection 
     :param startFilter: the intitial cloud cover filter value
@@ -205,7 +205,7 @@ def setFilterDecending(collection, startFilter, interval, iterations, minImages,
     return ee.Algorithms.If(allNulls, defaultFilter, bestFilter.get(0))
 
 def NDWI(image):
-     """ Calculates the NDWI of an image
+    """ Calculates the NDWI of an image
     :param image: an image
     :type: image: ee.Image
     :return: An image with a single ndwi band
