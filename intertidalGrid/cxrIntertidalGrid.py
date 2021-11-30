@@ -1,3 +1,5 @@
+import ee
+
 def focalMax(image, radius):
     """Smooths a raster using focal max
 

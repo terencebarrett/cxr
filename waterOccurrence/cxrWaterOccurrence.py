@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[ ]:
-
+import ee
 
 def cloudMask(image):
     """ Masks clouds within the image based on QA bands
@@ -108,8 +108,8 @@ def mosaicSameDay(collection):
         numberImages = filtered.size()
 
         mosaic = filtered.mosaic()
-        mosaic = mosaic.set('system:time_start', date.millis(),
-                            'system:footprint', mergeGeometries(filtered))
+        mosaic = mosaic.set('system:time_start', date.millis())
+                            # 'system:footprint', mergeGeometries(filtered))
 
         mosaic = mosaic.rename(bands)
         def reproject(bname, mos):
