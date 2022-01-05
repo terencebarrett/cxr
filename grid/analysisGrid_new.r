@@ -3,9 +3,9 @@ require("dggridR")
 # library(unix)  # This package is not compatible with this env
 
 # Input Parameters
-resolution <- 5  # Resolution of the processing grid (see the ISEA3H information)
+resolution <- 12  # Resolution of the processing grid (see the ISEA3H information)
 shapefile_basename <- "dggrid"
-memory_limit <- 16000  # [MB] Only used if running on Windows
+memory_limit <- 1000000  # [MB] Only used if running on Windows
 
 
 # Define paths
