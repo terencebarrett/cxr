@@ -223,18 +223,19 @@ def ndwiWater(image):
     # find the water using a fixed NDWI threshold
     NDWIWater = image.gt(ndwiThreshold)
 
-    #clean up the image #look into dilation in morphology module
-    connectedPixelSize = 512 #this can cause an internal error if set too high (1024 created errors for some cells)
-    def waterClean(image, size):
-        connectedPixels = image.int().connectedPixelCount(size)
-        pixelCountWhere = image.where(connectedPixels.lt(size), 0)
-        return pixelCountWhere
-
-    imageCleaned = waterClean(NDWIWater, connectedPixelSize)
-
+    # #clean up the image #look into dilation in morphology module
+    # connectedPixelSize = 512 #this can cause an internal error if set too high (1024 created errors for some cells)
+    # def waterClean(image, size):
+    #     connectedPixels = image.int().connectedPixelCount(size)
+    #     pixelCountWhere = image.where(connectedPixels.lt(size), 0)
+    #     return pixelCountWhere
+    #
+    # imageCleaned = waterClean(NDWIWater, connectedPixelSize)
+    #
     time = image.get('system:time_start')
-
-    return imageCleaned.set('system:time_start', time)
+    #
+    # return imageCleaned.set('system:time_start', time)
+    return NDWIWater.set('system:time_start', time)
 
 def featureProperties(date):
     """ Allocates image properties to the grid cell feature properties
